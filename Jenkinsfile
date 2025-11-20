@@ -8,8 +8,8 @@ pipeline {
     environment {
         PATH = "C:\\Program Files\\Docker\\Docker\\resources\\bin;${env.PATH}"
         JAVA_HOME = 'C:\\Program Files\\Java\\jdk-17'
-        SONARQUBE_SERVER = 'SonarQubeServer1'
-        SONAR_TOKEN = 'sqa_4a9cd5ae8e65c1d8a59395010075d01f8b60170e'
+        SONARQUBE_SERVER = 'SonarQubeServer'
+        SONAR_TOKEN = 'sqa_ad527e43d83ca16dd71a77a3b1df489f513635ef'
         DOCKERHUB_CREDENTIALS_ID = 'Docker_Hub'
         DOCKERHUB_REPO = 'amirdirin/sep2_week5_f2025'
         DOCKER_IMAGE_TAG = 'latest'
@@ -31,7 +31,7 @@ pipeline {
         stage('SonarQube Analysis') {
                 steps {
                     dir('sep2_week5_inclass_s2') {
-                        withSonarQubeEnv('SonarQubeServer1') {
+                        withSonarQubeEnv('SonarQubeServer') {
                             bat """
                                 mvn sonar:sonar ^
                                 -Dsonar.projectKey=devops-demo ^
