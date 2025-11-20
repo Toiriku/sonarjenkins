@@ -18,7 +18,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/ADirin/sep2_week5_inclass_s2.git'
+                git branch: 'main', url: 'https://github.com/Toiriku/sonarjenkins.git'
             }
         }
 
