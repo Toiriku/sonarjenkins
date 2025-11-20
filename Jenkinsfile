@@ -30,6 +30,7 @@ pipeline {
 
         stage('SonarQube Analysis') {
                 steps {
+                    dir('sep2_week5_inclass_s2') {
                         withSonarQubeEnv('SonarQubeServer') {
                             bat """
                                 mvn sonar:sonar ^
@@ -39,6 +40,7 @@ pipeline {
                                 -Dsonar.login=${env.SONAR_TOKEN} ^
                                 -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
                             """
+                        }
                     }
                 }
             }
