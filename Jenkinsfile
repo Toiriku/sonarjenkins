@@ -9,7 +9,7 @@ pipeline {
         PATH = "C:\\Program Files\\Docker\\Docker\\resources\\bin;${env.PATH}"
         JAVA_HOME = 'C:\\Program Files\\Java\\jdk-17'
         SONARQUBE_SERVER = 'SonarQubeServer'
-        SONAR_TOKEN = 'sqa_ad527e43d83ca16dd71a77a3b1df489f513635ef'
+        SONAR_TOKEN = credentials('Sonar_Token')
         DOCKERHUB_CREDENTIALS_ID = 'Docker_Hub'
         DOCKERHUB_REPO = 'toiriku/sep2_week5_f2025'
         DOCKER_IMAGE_TAG = 'latest'
