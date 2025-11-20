@@ -29,20 +29,19 @@ pipeline {
         }
 
         stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('SonarQubeServer') {
-                    bat """
-                        sonar-scanner ^
-                        -Dsonar.projectKey=devops-demo ^
-                        -Dsonar.sources=src ^
-                        -Dsonar.projectName=DevOps-Demo ^
-                        -Dsonar.host.url=http://localhost:9000 ^
-                        -Dsonar.login=${env.SONAR_TOKEN} ^
-                        -Dsonar.java.binaries=target/classes
-                    """
+                steps {
+                        withSonarQubeEnv('SonarQubeServer') {
+                            bat """
+                                mvn sonar:sonar ^
+                                -Dsonar.projectKey=devops-demo ^
+                                -Dsonar.projectName=DevOps-Demo ^
+                                -Dsonar.host.url=http://localhost:9000 ^
+                                -Dsonar.login=${env.SONAR_TOKEN} ^
+                                -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+                            """
+                    }
                 }
             }
-        }
 
         stage('Build Docker Image') {
             steps {
