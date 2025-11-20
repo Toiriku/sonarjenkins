@@ -30,7 +30,7 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('sonarqube') {
+                withSonarQubeEnv('SonarQubeServer') {
                     bat """
                         sonar-scanner ^
                         -Dsonar.projectKey=devops-demo ^
